@@ -1,5 +1,9 @@
 # yargui
 
+You had a problem with Redis administration so you downloaded a Redis GUI. Now you have to problems!
+
+## Configuration
+
 Edit the `config/redis.yml` file with your various evironment details.
 
 Then run (`RAILS_ENV` optional):
@@ -17,7 +21,7 @@ The front-end web app uses websockets to communicate with the Rails application 
 
 The front-end is composed of a table view and a JS-powered terminal. When you load the page, the table will load in all the keys in Redis and the data type of the key. Future versions will surface more usefull options like the ability to quickly delete a key or change it's value.
 
-Any Redis command can be run via the terminal. The terminal command to use is `redis` and the next string sent should represent a method on a [redis-rb](https://github.com/redis/redis-rb/blob/master/lib/redis.rb) client (since this is a wrapper for the Ruby client). A couple commands have enhanced responses.
+Any [Redis command](http://redis.io/commands) can be run via the terminal. The terminal command to use is `redis` and the next string sent should represent a method on a [redis-rb](https://github.com/redis/redis-rb/blob/master/lib/redis.rb) client (since this is a wrapper for the Ruby client). A couple commands have enhanced responses.
 
 
 ### Examples:
@@ -45,7 +49,7 @@ Delete a key
 
 ## Deployment
 
-Yargui **should NOT be deployed** to production or even staging and is intended to be **run locally as a development tool**. The application makes calls to Redis using the `KEYS` command, which can cause performance issues if the size of the database is very large.
+Yargui **should NOT be deployed** to production or even staging and is intended to be **run locally as a development tool**. The application makes calls to Redis using the `[KEYS](http://redis.io/commands/keys)` command, which can cause performance issues if the size of the database is very large.
 
 ## Future Goals
 

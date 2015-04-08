@@ -45,7 +45,7 @@ Delete a key
 
 ## Deployment
 
-Yargui *should not be deployed* to production or even staging and is intended to be **run locally as a development tool**. The application makes calls to Redis using the `KEYS` command, which can cause performance issues if the size of the database is very large.
+Yargui **should NOT be deployed** to production or even staging and is intended to be **run locally as a development tool**. The application makes calls to Redis using the `KEYS` command, which can cause performance issues if the size of the database is very large.
 
 ## Future Goals
 

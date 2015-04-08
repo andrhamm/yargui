@@ -81,6 +81,8 @@ ApplicationController.prototype.home = function(){
       });
 
       table.dom.update();
+
+      term.echo('table updated with ' + keyArr.length + ' keys');
     });
 
     dispatcher.bind('keys', function(data){
@@ -91,6 +93,8 @@ ApplicationController.prototype.home = function(){
       });
 
       table.dom.update();
+
+      term.echo('table updated with ' + data.keys.length + ' keys');
     });
 
     dispatcher.bind('key', function(data){

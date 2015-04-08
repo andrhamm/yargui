@@ -13,9 +13,9 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'paloma'
 gem 'websocket-rails'
+gem 'puma'
 
 group :development, :test do
-  gem 'puma'
   gem 'byebug'
 end
 

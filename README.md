@@ -4,7 +4,7 @@ Edit the `config/redis.yml` file with your various evironment details.
 
 Then run (`RAILS_ENV` optional):
 
-    RAILS_ENV=staging rails s Puma
+    RAILS_ENV=staging rails s puma
 
 Open your browser to
 

@@ -24,20 +24,20 @@ Any Redis command can be run via the terminal. The terminal command to use is `r
 
 Load all keys into the table:
 
-    redis keys
+    yargui> redis keys
 
 Load keys using matching a pattern:
 
-    redis keys "my:keys:*"
+    yargui> redis keys "my:keys:*"
 
 Set the value of a key, with a TTL:
 
-    redis set "foo", "bar", ex: 3
+    yargui> redis set "foo", "bar", ex: 3
 
 Get the value of a key (also returns extra details):
 
-    redis get "foo"
+    yargui> redis get "foo"
 
 Delete a key
 
-    redis del "foo"
+    yargui> redis del "foo"

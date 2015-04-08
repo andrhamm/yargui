@@ -41,3 +41,16 @@ Get the value of a key (also returns extra details):
 Delete a key
 
     yargui> redis del "foo"
+
+
+## NOTE!
+
+This should not be deployed to production or even staging and is intended to be run locally as a development tool. The application makes calls to Redis using the `KEYS` command, which can cause performance issues if the size of the database is very large.
+
+## Future Goals
+
+* Quick-delete options on all table rows
+* Viewing and editing of keys, sets, lists, and hashes
+* Powerful filtering and bulk editing commands
+* Real-time monitoring of new/changing keys (this might be tough)
+* Gemify and make it work similar to Sidekiq::Web

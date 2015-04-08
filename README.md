@@ -1,6 +1,8 @@
 # yargui
 
-You had a problem with Redis administration so you downloaded a Redis GUI. Now you have two problems!
+> *You had a problem with Redis administration so you downloaded a Redis GUI. Now you have two problems!*
+
+![yargui screenshot](http://i.imgur.com/EpDqqV9.png)
 
 ## Configuration
 

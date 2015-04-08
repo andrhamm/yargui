@@ -1,0 +1,19 @@
+default: &default
+  url: 'redis://localhost:6379'
+  timeout: 2.0
+  connect_timeout: 2.0
+  size: 10
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
+  size: 100
+

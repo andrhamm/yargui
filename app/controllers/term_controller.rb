@@ -43,19 +43,27 @@ class TermController < WebsocketRails::BaseController
     if resp.is_a?(Array) && Redis.current.type(resp.first) != 'none'
       key_objects = get_key_objects resp
 
+      trigger_success response: "#{key_objects.count} keys matched query"
+
       send_message :keys, keys: key_objects
 
-      resp = "(yargui: table updated with #{key_objects.count} keys)"
+      return
+    elsif method.match(/^keys$/i) && resp.blank?
+      trigger_success response: "no keys matched query"
+      send_message :keys, keys: []
     elsif method.match(/^(get|set)$/i)
       if key_details = get_key_details(args.first)
+        trigger_success response: resp
+
         send_message :key, key_details
+        return
       end
     end
 
     trigger_success response: resp
   rescue => e
     p [e.message, e.backtrace].flatten.join("\n")
-    trigger_failure message: e.message
+    trigger_failure message: "Error on server: #{e.message}"
   end
 
   private

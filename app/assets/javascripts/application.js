@@ -39,18 +39,23 @@ ApplicationController.prototype.home = function(){
         console.log('command: redis, string: ' + string);
         var opts = {}
         opts.string = string;
+        term.pause();
         dispatcher.trigger('redis_call', opts, function(response){
           console.log('Server triggered success');
           console.log(response);
-          term.echo("[[i;white;]\t\t => " + JSON.stringify(response.response) + "\n]");
+          if (response.response && response.response.length) {
+            term.echo("[[i;green;]\t=> " + JSON.stringify(response.response) + "\n]");
+          }
+          term.resume();
         }, function(response){
           console.log('Server triggered failure');
           console.log(response);
-          error(response.message);
+          term.error(response.message);
+          term.resume();
         })
       }
     }, {
-        greetings: "[[i;yellow;]Yet Another Redis GUI]",
+        greetings: "[[bui;yellow;]Yet Another Redis GUI] - [[bi;magenta;]by @andrhamm]",
         height: 200,
         prompt: 'yargui> ',
         processArguments: function(command) {
@@ -82,7 +87,7 @@ ApplicationController.prototype.home = function(){
 
       table.dom.update();
 
-      term.echo('table updated with ' + keyArr.length + ' keys');
+      term.echo('[[i;darkgray;]table updated with ' + keyArr.length + ' keys]');
     });
 
     dispatcher.bind('keys', function(data){
@@ -94,7 +99,7 @@ ApplicationController.prototype.home = function(){
 
       table.dom.update();
 
-      term.echo('table updated with ' + data.keys.length + ' keys');
+      term.echo('[[i;darkgray;]table updated with ' + data.keys.length + ' keys]');
     });
 
     dispatcher.bind('key', function(data){
@@ -104,7 +109,9 @@ ApplicationController.prototype.home = function(){
       for (var i = 0; i < pairs.length; i++ ) {
         summary += pairs[i].join(': ') + "  "
       }
-      term.echo("[[i;cyan;]\t\t => " + summary + "\n]");
+      if (summary.length) {
+        term.echo("[[i;green;]\t=> " + summary + "\n]");
+      }
     });
   });
 };
